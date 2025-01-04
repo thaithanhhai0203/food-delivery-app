@@ -1,6 +1,6 @@
 export const color = {
     primary: {
-        main: '#4C4DDC',
+        main: '#FF8C42',
         surface: '#F5F5FF',
         border: '#DFE0F3',
         hover: '#E69137',
