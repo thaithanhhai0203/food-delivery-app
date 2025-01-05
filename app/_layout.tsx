@@ -5,7 +5,7 @@ export default function RootLayout() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [hasOnboarded, setHasOnboarded] = useState(false);
   const router = useRouter();
-  
+
   useEffect(() => {
 
     const checkUserState = async () => {
