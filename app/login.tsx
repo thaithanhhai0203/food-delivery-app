@@ -27,7 +27,7 @@ const LoginScreen = () => {
   };
 
   const handleForgotPassword = () => {
-    Alert.alert("Forgot Password", "Redirecting to reset password...");
+    router.push("/forgot-password");
   };
 
 
