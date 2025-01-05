@@ -7,6 +7,15 @@ const ForgotPasswordScreen = () => {
     const [email, setEmail] = React.useState("");
     const router = useRouter();
 
+    const handleForgotPassword = () => {
+        // Send email to server for password reset
+        console.log("Email entered:", email);
+        router.push({
+            pathname: "/otp-verification",
+            params: { email },
+        });
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Forgot password?</Text>
@@ -27,7 +36,7 @@ const ForgotPasswordScreen = () => {
                 <Text style={styles.forgotPassword}>Back to Login</Text>
             </TouchableOpacity>
             {/* Continue Button */}
-            <TouchableOpacity style={styles.button} onPress={() => console.log("Email submitted:", email)}>
+            <TouchableOpacity style={styles.button} onPress={handleForgotPassword}>
                 <Text style={styles.buttonText}>Continue</Text>
             </TouchableOpacity>
         </View>
@@ -62,7 +71,7 @@ const styles = StyleSheet.create({
         color: "#000",
     },
     button: {
-        backgroundColor: "#FFA500", // Orange color
+        backgroundColor: color.primary.main,
         borderRadius: 8,
         paddingVertical: 15,
         alignItems: "center",
@@ -73,7 +82,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     linkText: {
-        color: "#007BFF",
+        color: color.primary.main,
         fontSize: 14,
         textAlign: "center",
     },
