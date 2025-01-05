@@ -1,4 +1,4 @@
-import { icon } from '@/constants/icon';
+import { icon } from '@/components/constants/icon';
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { PlatformPressable } from '@react-navigation/elements';
 import { useLinkBuilder } from '@react-navigation/native';
@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { LabelPosition } from '@react-navigation/bottom-tabs/lib/typescript/commonjs/src/types';
-import { color as colors } from '@/constants/color';
+import { color as colors } from '@/components/constants/color';
 
 interface IProps {
     onPress: () => void;

@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
-import { color } from "@/constants/color";
+import { color } from "@/components/constants/color";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");

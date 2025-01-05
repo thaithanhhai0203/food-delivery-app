@@ -1,28 +1,196 @@
 import { useRouter } from "expo-router";
-import { Button, StyleSheet, Text, View } from "react-native"
+import {
+  Button,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import onboarding1 from "@/assets/images/onboarding1.png";
+import onboarding2 from "@/assets/images/onboarding2.png";
+import onboarding3 from "@/assets/images/onboarding3.png";
+import { color as colors } from "@/components/constants/color";
+import { icon } from "@/components/constants/icon";
+import { useState } from "react";
 
-const OnBoardingScreen = () => {
-    const router = useRouter();
-
-    const handleCompleteOnboarding = () => {
-        // Save Onboarding state
-        router.replace("/login");
-    };
-
-    return (
-        <View style={styles.container}>
-            <Text>Welcome to the App! Complete Onboarding!</Text>
-            <Button title="Continue to Login" onPress={handleCompleteOnboarding} />
-        </View>
-    );
+interface Slide {
+  id: number;
+  img: any;
+  title: string;
+  des: string;
 }
+const OnBoardingScreen = () => {
+  const router = useRouter();
+  const [slide, setSide] = useState(0);
+  const [isCompleteOnboarding, setCompleteOnboarding] = useState(false);
+
+  const slides: Array<Slide> = [
+    {
+      id: 1,
+      img: onboarding1,
+      title: "We serve incomparable delicacies 1",
+      des: "All the best restaurants with their top menu waiting for you, they cant't wait for your order!!",
+    },
+    {
+      id: 2,
+      img: onboarding2,
+      title: "We serve incomparable delicacies 2",
+      des: "All the best restaurants with their top menu waiting for you, they cant't wait for your order!!",
+    },
+    {
+      id: 3,
+      img: onboarding3,
+      title: "We serve incomparable delicacies 3",
+      des: "All the best restaurants with their top menu waiting for you, they cant't wait for your order!!",
+    },
+  ];
+
+  const handleNext = (slide: number) => {
+    if (slide < slides.length - 1) {
+      setSide(slide);
+    } else {
+      setSide(slide);
+      setCompleteOnboarding(true);
+    }
+  };
+
+  const handleSkip = () => {
+    setCompleteOnboarding(true);
+  };
+
+  const handleCompleteOnboarding = () => {
+    // Save Onboarding state
+    router.replace("/login");
+  };
+
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={slides[slide].img}
+        resizeMode="cover"
+        style={styles.imageBackground}
+      >
+        {/* <Button title="Continue to Login" onPress={handleCompleteOnboarding} /> */}
+        <View style={styles.introduce}>
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>{slides[slide].title}</Text>
+            <Text style={styles.des}>{slides[slide].des}</Text>
+
+            <View style={styles.dashContainer}>
+              {slides.map((item, index) => (
+                <Text key={index} style={styles.dash}>
+                  {icon.dash({
+                    color: index === slide ? "#999" : colors.neutral[10],
+                    size: 60,
+                  })}
+                </Text>
+              ))}
+            </View>
+          </View>
+
+          {!isCompleteOnboarding ? (
+            <View style={styles.btnContainer}>
+              <TouchableOpacity onPress={handleSkip}>
+                <Text style={styles.btnText}>Skip</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  handleNext(slide + 1);
+                }}
+                style={{ flexDirection: "row", alignItems: "center" }}
+              >
+                <Text style={styles.btnText}>Next</Text>
+                <Text>{icon.next({ color: colors.neutral[10] })}</Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View style={styles.btnContainer}>
+              <TouchableOpacity
+                style={{
+                  marginHorizontal: "auto",
+                  padding: 10,
+                  backgroundColor: colors.primary.main,
+                  borderColor: colors.neutral[10],
+                  borderTopWidth: 2,
+                  borderRightWidth: 2,
+                  borderBottomWidth: 2,
+                  borderRadius: 50,
+                }}
+                onPress={handleCompleteOnboarding}
+              >
+                <Text style={styles.btnIcon}>
+                  {icon.next({ color: colors.primary.main, size: 40 })}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
+      </ImageBackground>
+    </View>
+  );
+};
 
 export default OnBoardingScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-})
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  imageBackground: {
+    width: "100%",
+    height: "100%",
+  },
+  introduce: {
+    width: "90%",
+    height: 400,
+    marginTop: "85%",
+    marginHorizontal: "auto",
+    alignItems: "center",
+    backgroundColor: colors.primary.main,
+    paddingVertical: 30,
+    borderRadius: 40,
+    justifyContent: "space-between",
+  },
+  textContainer: {
+    width: 300,
+  },
+  title: {
+    color: colors.neutral[10],
+    fontSize: 30,
+    textAlign: "center",
+    marginBottom: 10,
+  },
+  des: {
+    color: colors.neutral[10],
+    fontSize: 18,
+    textAlign: "center",
+  },
+  dashContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  dash: {
+    marginHorizontal: 5,
+  },
+  btnContainer: {
+    width: 300,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  btnText: {
+    color: colors.neutral[10],
+    fontSize: 18,
+    marginRight: 5,
+  },
+  btnIcon: {
+    width: 80,
+    height: 80,
+    backgroundColor: colors.neutral[10],
+    textAlign: "center",
+    lineHeight: 80,
+    borderRadius: 50,
+  },
+});
