@@ -54,7 +54,7 @@ const OTPVerification: React.FC = () => {
             Alert.alert('Error', 'Please enter a valid 4-digit OTP.');
             return;
         }
-        router.navigate('/login');
+        router.navigate('/reset-password');
     };
 
     return (

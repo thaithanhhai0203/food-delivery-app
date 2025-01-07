@@ -12,7 +12,7 @@ import { color } from "@/components/constants/color";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { Checkbox } from "react-native-paper";
 
-const register = () => {
+const RegisterScreen = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -140,7 +140,7 @@ const register = () => {
   );
 };
 
-export default register;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
