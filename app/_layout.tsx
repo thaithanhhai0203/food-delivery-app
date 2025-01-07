@@ -7,7 +7,6 @@ export default function RootLayout() {
   const router = useRouter();
 
   useEffect(() => {
-
     const checkUserState = async () => {
       // Get state from AsyncStorage or API
       const onboarded = false;
@@ -29,6 +28,7 @@ export default function RootLayout() {
       <Stack.Screen name="forgot-password" options={{ headerShown: false }} />
       <Stack.Screen name="otp-verification" options={{ headerShown: false }} />
       <Stack.Screen name="login" options={{ headerShown: false }} />
+      <Stack.Screen name="register" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );

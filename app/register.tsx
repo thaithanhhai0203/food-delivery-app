@@ -1,43 +1,48 @@
-import { useRouter } from "expo-router";
-import React, { useState } from "react";
 import {
   View,
   Text,
+  StyleSheet,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
   Alert,
 } from "react-native";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import React, { useState } from "react";
+import { useRouter } from "expo-router";
 import { color } from "@/components/constants/color";
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { Checkbox } from "react-native-paper";
 
-const LoginScreen = () => {
+const register = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
+  const [checked, setChecked] = useState(false);
 
-  const handleLogin = () => {
-    if (!email || !password) {
+  const handleRegister = () => {
+    if (!email || !userName || !password) {
       Alert.alert("Error", "Please fill in all fields");
       return;
     }
-    Alert.alert("Success", `Logged in with email: ${email}`);
+    if (!checked) {
+      Alert.alert("Error", "Please click agree");
+      return;
+    }
+    Alert.alert("Success", `Register with email: ${email}`);
     router.replace("/(tabs)");
   };
 
-  const handleForgotPassword = () => {
-    router.push("/forgot-password");
-  };
-
-  const handleRegister = () => {
-    router.push("/register");
+  const handleLogin = () => {
+    router.push("/login");
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login to your account.</Text>
-      <Text style={styles.subtitle}>Please sign in to your account</Text>
+      <Text style={styles.title}>Create your new account</Text>
+      <Text style={styles.subtitle}>
+        Create an account to start looking for the food you like
+      </Text>
 
       {/* Email Input */}
       <TextInput
@@ -46,6 +51,15 @@ const LoginScreen = () => {
         keyboardType="email-address"
         value={email}
         onChangeText={(text) => setEmail(text)}
+      />
+
+      {/* User Name Input */}
+      <TextInput
+        style={styles.input}
+        placeholder="User name"
+        keyboardType="user-name"
+        value={userName}
+        onChangeText={(text) => setUserName(text)}
       />
 
       {/* Password Input */}
@@ -69,14 +83,26 @@ const LoginScreen = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Forgot Password */}
-      <TouchableOpacity onPress={handleForgotPassword}>
-        <Text style={styles.forgotPassword}>Forgot password?</Text>
-      </TouchableOpacity>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <Checkbox
+          status={checked ? "checked" : "unchecked"}
+          onPress={() => setChecked(!checked)}
+          color={color.primary.main}
+          uncheckedColor="gray"
+        />
+        <Text>
+          I Agree with
+          <Text style={{ color: color.primary.main }}>
+            Terms of Service
+          </Text>{" "}
+          and
+          <Text style={{ color: color.primary.main }}> Privacy Policy</Text>
+        </Text>
+      </View>
 
-      {/* Sign In Button */}
-      <TouchableOpacity style={styles.signInButton} onPress={handleLogin}>
-        <Text style={styles.signInButtonText}>Sign In</Text>
+      {/* Register Button */}
+      <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
+        <Text style={styles.registerButtonText}>Register</Text>
       </TouchableOpacity>
 
       {/* Social Login */}
@@ -97,7 +123,7 @@ const LoginScreen = () => {
         </View>
       </View>
 
-      {/* Register */}
+      {/* Sign in */}
       <View
         style={{
           flexDirection: "row",
@@ -105,16 +131,16 @@ const LoginScreen = () => {
           justifyContent: "center",
         }}
       >
-        <Text style={styles.registerText}>Don’t have an account? </Text>
-        <TouchableOpacity onPress={handleRegister}>
-          <Text style={styles.registerLink}>Register</Text>
+        <Text style={styles.signInText}>Don’t have an account? </Text>
+        <TouchableOpacity onPress={handleLogin}>
+          <Text style={styles.signInLink}>Sign In</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default LoginScreen;
+export default register;
 
 const styles = StyleSheet.create({
   container: {
@@ -152,13 +178,8 @@ const styles = StyleSheet.create({
     right: 15,
     top: 15,
   },
-  forgotPassword: {
-    color: color.primary.main,
-    fontSize: 14,
-    textAlign: "right",
-    marginBottom: 20,
-  },
-  signInButton: {
+
+  registerButton: {
     backgroundColor: color.primary.main,
     height: 50,
     justifyContent: "center",
@@ -166,7 +187,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 30,
   },
-  signInButtonText: {
+  registerButtonText: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
@@ -191,12 +212,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "60%",
   },
-  registerText: {
+  signInText: {
     fontSize: 14,
     color: color.neutral[60],
     textAlign: "center",
   },
-  registerLink: {
+  signInLink: {
     color: color.primary.main,
     fontWeight: "bold",
   },

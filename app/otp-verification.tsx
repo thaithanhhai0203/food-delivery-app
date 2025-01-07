@@ -1,4 +1,4 @@
-import { color } from '@/constants/color';
+import { color } from '@/components/constants/color';
 import { useSearchParams } from 'expo-router/build/hooks';
 import React, { useState, useRef } from 'react';
 import { useRouter } from "expo-router";
