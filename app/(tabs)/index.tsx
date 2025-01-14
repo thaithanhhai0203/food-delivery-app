@@ -7,7 +7,7 @@ const HomeScreen = () => {
         <View style={styles.container}>
             <Text>Home Screen</Text>
             <Button title="Comeback onboarding" onPress={() => {
-                router.replace("/onboarding");
+                router.replace("/notification");
             }} />
         </View>
     )
