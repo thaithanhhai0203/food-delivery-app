@@ -1,5 +1,4 @@
-import { Feather } from "@expo/vector-icons";
-import { Octicons } from "@expo/vector-icons";
+import { Feather, Octicons, Ionicons } from "@expo/vector-icons";
 
 export const icon: { [key: string]: (props: any) => JSX.Element } = {
   index: (props: any) => <Feather name="home" size={24} {...props} />,
@@ -11,5 +10,18 @@ export const icon: { [key: string]: (props: any) => JSX.Element } = {
   ),
   dash: (props: any) => (
     <Octicons name="dash" size={props.size || 24} {...props} />
+  ),
+  location: (props: any) => (
+    <Ionicons name="location-outline" size={props.size || 24} {...props} />
+  ),
+  search: (props: any) => (
+    <Ionicons name="search-circle-outline" size={props.size || 24} {...props} />
+  ),
+  notifications: (props: any) => (
+    <Ionicons
+      name="notifications-circle-outline"
+      size={props.size || 24}
+      {...props}
+    />
   ),
 };

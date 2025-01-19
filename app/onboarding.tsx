@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import onboarding1 from "@/assets/images/onboarding1.png";
-import onboarding2 from "@/assets/images/onboarding2.png";
-import onboarding3 from "@/assets/images/onboarding3.png";
+import onboarding1 from "@/assets/images/onboarding/onboarding1.png";
+import onboarding2 from "@/assets/images/onboarding/onboarding2.png";
+import onboarding3 from "@/assets/images/onboarding/onboarding3.png";
 import { color } from "@/components/constants/color";
 import { icon } from "@/components/constants/icon";
 import { useState } from "react";
