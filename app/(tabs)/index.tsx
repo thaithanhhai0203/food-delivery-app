@@ -7,9 +7,9 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
 import { useState } from "react";
-import DropDownPicker from "react-native-dropdown-picker";
 import { icon } from "@/components/constants/icon";
 import { color } from "@/components/constants/color";
 import header from "@/assets/images/product-list/header.png";
@@ -17,19 +17,16 @@ import burger from "@/assets/images/product-list/burger.png";
 import taco from "@/assets/images/product-list/taco.png";
 import drink from "@/assets/images/product-list/drink.png";
 import pizza from "@/assets/images/product-list/pizza.png";
+import product1 from "@/assets/images/product-list/product1.png";
+import Product from "@/components/Product";
 
 const HomeScreen = () => {
   const router = useRouter();
   const [location, setLocation] = useState("");
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    { label: "Java", value: "Cần Thơ" },
-    { label: "JavaScript", value: "HCM" },
-    { label: "Python", value: "Vĩnh Long" },
-  ]);
+  const [category, setCategory] = useState("Burger");
 
-  const [category, setCategory] = useState("");
+  const [favourite, setFavourite] = useState("");
+
   const categories = [
     {
       name: "Burger",
@@ -49,47 +46,81 @@ const HomeScreen = () => {
     },
   ];
 
+  const productList = [
+    {
+      id: 1,
+      name: "Ordinary Burger",
+      img: product1,
+      price: "20.000",
+      isFavourite: false,
+      evaluate: "5",
+      distance: "200m",
+    },
+    {
+      id: 2,
+      name: "Burger",
+      img: product1,
+      price: "20.000",
+      isFavourite: true,
+      evaluate: "4.9",
+      distance: "150m",
+    },
+    {
+      id: 3,
+      name: "Burger",
+      img: product1,
+      price: "20.000",
+      isFavourite: true,
+      evaluate: "4.9",
+      distance: "150m",
+    },
+    {
+      id: 4,
+      name: "Burger",
+      img: product1,
+      price: "20.000",
+      isFavourite: true,
+      evaluate: "4.9",
+      distance: "150m",
+    },
+  ];
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* header */}
       <ImageBackground
         source={header}
         style={styles.headerImageBackground}
         resizeMode="cover"
       >
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View style={{ flexDirection: "row" }}>
-            <Text style={{ fontSize: 30, color: "#fff" }}>
-              {icon.location({ size: 30, color: "#fff" })}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            padding: 10,
+          }}
+        >
+          <View>
+            <TouchableOpacity>
+              <Text style={{ color: "#fff" }}>
+                Your Location {icon.down({ size: 14 })}
+              </Text>
+            </TouchableOpacity>
+
+            <Text style={{ fontSize: 18, color: "#fff" }}>
+              {icon.location({ size: 18, color: "#fff" })} Cần Thơ
             </Text>
-            <DropDownPicker
-              open={open}
-              value={value}
-              items={items}
-              setOpen={setOpen}
-              setValue={setValue}
-              setItems={setItems}
-              searchable={true}
-              placeholder="Your Location"
-              placeholderStyle={{ width: 150, color: "#fff" }}
-              searchContainerStyle={{ width: 150 }}
-              searchTextInputStyle={{ width: 150 }}
-              dropDownContainerStyle={{ width: 150 }}
-              style={styles.headerDropdown}
-              zIndex={999}
-            />
           </View>
           <View style={{ flexDirection: "row" }}>
             <TouchableOpacity>
-              <Text>{icon.search({ size: 40, color: "#fff" })}</Text>
+              <Text>{icon.search({ size: 50, color: "#fff" })}</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text>{icon.notifications({ size: 40, color: "#fff" })}</Text>
+              <Text>{icon.notifications({ size: 50, color: "#fff" })}</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.headerTitle}>Provide the best</Text>
-        <Text style={styles.headerTitle}>food for you</Text>
+        <Text style={styles.headerTitle}>Provide the best food for you</Text>
       </ImageBackground>
 
       {/* category */}
@@ -138,7 +169,15 @@ const HomeScreen = () => {
           ))}
         </View>
       </View>
-    </View>
+
+      {/* product list */}
+
+      <View style={styles.productListContainer}>
+        {productList?.map((item) => (
+          <Product key={item?.id} data={item} />
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -146,27 +185,22 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 0,
+    backgroundColor: "#fff",
+    paddingBottom: 100
   },
   headerImageBackground: {
-    // position: "fixed",
-    // top: 0,
     width: "100%",
-    // padding: 10,
   },
-  headerDropdown: {
-    width: 150,
-    backgroundColor: "none",
-    borderColor: "transparent",
-  },
+
   headerTitle: {
     color: "#fff",
     fontSize: 40,
     marginTop: 55,
+    padding: 10,
     zIndex: 1,
   },
   categoryContainer: {
-    padding: 20,
+    padding: 10,
     backgroundColor: "#fff",
   },
   categoryTitle: {
@@ -184,5 +218,12 @@ const styles = StyleSheet.create({
   categoryText: {
     textAlign: "center",
     fontSize: 20,
+  },
+  productListContainer: {
+    padding: 10,
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
   },
 });

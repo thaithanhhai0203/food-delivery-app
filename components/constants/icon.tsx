@@ -1,4 +1,4 @@
-import { Feather, Octicons, Ionicons } from "@expo/vector-icons";
+import { Feather, Octicons, Ionicons, AntDesign } from "@expo/vector-icons";
 
 export const icon: { [key: string]: (props: any) => JSX.Element } = {
   index: (props: any) => <Feather name="home" size={24} {...props} />,
@@ -23,5 +23,17 @@ export const icon: { [key: string]: (props: any) => JSX.Element } = {
       size={props.size || 24}
       {...props}
     />
+  ),
+  down: (props: any) => (
+    <AntDesign name="down" size={props.size || 24} {...props} />
+  ),
+  hearto: (props: any) => (
+    <AntDesign name="hearto" size={props.size || 24} {...props} />
+  ),
+  heart: (props: any) => (
+    <AntDesign name="heart" size={props.size || 24} {...props} />
+  ),
+  star: (props: any) => (
+    <AntDesign name="star" size={props.size || 24} {...props} />
   ),
 };

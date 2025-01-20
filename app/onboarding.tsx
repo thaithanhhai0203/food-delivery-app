@@ -20,6 +20,7 @@ interface ISlide {
   title: string;
   des: string;
 }
+
 const OnBoardingScreen = () => {
   const router = useRouter();
   const [slide, setSide] = useState(0);
@@ -71,7 +72,6 @@ const OnBoardingScreen = () => {
         resizeMode="cover"
         style={styles.imageBackground}
       >
-        {/* <Button title="Continue to Login" onPress={handleCompleteOnboarding} /> */}
         <View style={styles.introduce}>
           <View style={styles.textContainer}>
             <Text style={styles.title}>{slides[slide].title}</Text>
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   introduce: {
     width: "90%",
-    height: 400,
+    height: 430,
     marginTop: "85%",
     marginHorizontal: "auto",
     alignItems: "center",
