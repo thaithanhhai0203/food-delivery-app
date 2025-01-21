@@ -9,12 +9,13 @@ import {
 import { icon } from "@/components/constants/icon";
 import { color } from "@/components/constants/color";
 import React, { useState } from "react";
+import { useRouter } from "expo-router";
 
 interface IProps {
   data: {
     id: number;
     name: string;
-    img: ImageSourcePropType;
+    img: Array<ImageSourcePropType>;
     price: string;
     isFavourite: boolean;
     evaluate: string;
@@ -24,16 +25,27 @@ interface IProps {
 
 const Product = (props: IProps) => {
   const { data } = props;
+  const router = useRouter();
 
   const handleFavourite = (id: number, isFavourite: boolean) => {
-    console.log(id)
-    console.log(!isFavourite);
+    console.log(id);
+    console.log(isFavourite);
   };
 
+  const handleProductDetail = (id: number) => {
+    router.push({
+      pathname: "/product-detail",
+      params: { id },
+    });
+  };
+  
   return (
-    <TouchableOpacity style={styles.productContainer}>
+    <TouchableOpacity
+      onPress={() => handleProductDetail(data?.id)}
+      style={styles.productContainer}
+    >
       <ImageBackground
-        source={data?.img}
+        source={data?.img[0]}
         style={styles.productImageBackground}
         resizeMode="cover"
         imageStyle={{ borderRadius: 10 }}

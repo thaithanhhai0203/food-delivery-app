@@ -36,4 +36,11 @@ export const icon: { [key: string]: (props: any) => JSX.Element } = {
   star: (props: any) => (
     <AntDesign name="star" size={props.size || 24} {...props} />
   ),
+  back: (props: any) => (
+    <Ionicons
+      name="chevron-back-circle-outline"
+      size={props.size || 24}
+      {...props}
+    />
+  ),
 };

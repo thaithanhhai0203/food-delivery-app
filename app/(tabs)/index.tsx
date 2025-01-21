@@ -17,15 +17,13 @@ import burger from "@/assets/images/product-list/burger.png";
 import taco from "@/assets/images/product-list/taco.png";
 import drink from "@/assets/images/product-list/drink.png";
 import pizza from "@/assets/images/product-list/pizza.png";
-import product1 from "@/assets/images/product-list/product1.png";
+import image1 from "@/assets/images/product-detail/product1/image1.png";
+import image2 from "@/assets/images/product-detail/product1/image2.png";
 import Product from "@/components/Product";
 
 const HomeScreen = () => {
   const router = useRouter();
-  const [location, setLocation] = useState("");
   const [category, setCategory] = useState("Burger");
-
-  const [favourite, setFavourite] = useState("");
 
   const categories = [
     {
@@ -50,7 +48,7 @@ const HomeScreen = () => {
     {
       id: 1,
       name: "Ordinary Burger",
-      img: product1,
+      img: [image1, image2],
       price: "20.000",
       isFavourite: false,
       evaluate: "5",
@@ -59,7 +57,7 @@ const HomeScreen = () => {
     {
       id: 2,
       name: "Burger",
-      img: product1,
+      img: [image1],
       price: "20.000",
       isFavourite: true,
       evaluate: "4.9",
@@ -68,7 +66,7 @@ const HomeScreen = () => {
     {
       id: 3,
       name: "Burger",
-      img: product1,
+      img: [image1],
       price: "20.000",
       isFavourite: true,
       evaluate: "4.9",
@@ -77,7 +75,7 @@ const HomeScreen = () => {
     {
       id: 4,
       name: "Burger",
-      img: product1,
+      img: [image1],
       price: "20.000",
       isFavourite: true,
       evaluate: "4.9",
@@ -186,7 +184,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    paddingBottom: 100
+    paddingBottom: 100,
   },
   headerImageBackground: {
     width: "100%",
