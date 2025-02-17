@@ -110,7 +110,7 @@ const HomeScreen = () => {
             </Text>
           </View>
           <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => router.push("/search")}>
               {icon.search({ size: 50, color: "#fff" })}
             </TouchableOpacity>
             <TouchableOpacity>

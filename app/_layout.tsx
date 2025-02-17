@@ -31,6 +31,7 @@ export default function RootLayout() {
       <Stack.Screen name="notification" options={{ headerShown: false }} />
       <Stack.Screen name="order-empty" options={{ headerShown: false }} />
       <Stack.Screen name="reset-password" options={{ headerShown: false }} />
+      <Stack.Screen name="search" options={{ headerShown: false }} />
       <Stack.Screen
         name="product-detail/[id]"
         options={{ headerShown: false }}
