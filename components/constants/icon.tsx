@@ -1,4 +1,4 @@
-import { Feather, Octicons, Ionicons, AntDesign } from "@expo/vector-icons";
+import { Feather, Octicons, Ionicons, AntDesign, FontAwesome6, FontAwesome5 } from "@expo/vector-icons";
 
 export const icon: { [key: string]: (props: any) => JSX.Element } = {
   index: (props: any) => <Feather name="home" size={24} {...props} />,
@@ -42,5 +42,20 @@ export const icon: { [key: string]: (props: any) => JSX.Element } = {
       size={props.size || 24}
       {...props}
     />
+  ),
+  dollar: (props: any) => (
+    <Feather name="dollar-sign" size={props.size || 24} {...props} />
+  ),
+  time: (props: any) => (
+    <Ionicons name="time" size={props.size || 24} {...props} />
+  ),
+  add: (props: any) => (
+    <FontAwesome6 name="add" size={props.size || 24} {...props} />
+  ),
+  minus: (props: any) => (
+    <FontAwesome5 name="minus" size={props.size || 24} {...props} />
+  ),
+  cart: (props: any) => (
+    <AntDesign name="shoppingcart" size={props.size || 24} {...props} />
   ),
 };

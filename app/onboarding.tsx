@@ -79,12 +79,13 @@ const OnBoardingScreen = () => {
 
             <View style={styles.dashContainer}>
               {slides.map((item, index) => (
-                <Text key={index} style={styles.dash}>
+                <View key={index}>
                   {icon.dash({
                     color: index === slide ? "#999" : color.neutral[10],
                     size: 60,
+                    marginHorizontal: 5,
                   })}
-                </Text>
+                </View>
               ))}
             </View>
           </View>
@@ -101,7 +102,7 @@ const OnBoardingScreen = () => {
                 style={{ flexDirection: "row", alignItems: "center" }}
               >
                 <Text style={styles.btnText}>Next</Text>
-                <Text>{icon.next({ color: color.neutral[10] })}</Text>
+                {icon.next({ color: color.neutral[10] })}
               </TouchableOpacity>
             </View>
           ) : (

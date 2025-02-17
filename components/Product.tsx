@@ -34,11 +34,11 @@ const Product = (props: IProps) => {
 
   const handleProductDetail = (id: number) => {
     router.push({
-      pathname: "/product-detail",
+      pathname: "/product-detail/[id]",
       params: { id },
     });
   };
-  
+
   return (
     <TouchableOpacity
       onPress={() => handleProductDetail(data?.id)}
@@ -54,24 +54,22 @@ const Product = (props: IProps) => {
           style={styles.productFavourite}
           onPress={() => handleFavourite(data?.id, data?.isFavourite)}
         >
-          <Text style={styles.IconFavourite}>
-            {data?.isFavourite
-              ? icon.heart({ color: "red" })
-              : icon.hearto({ color: "red" })}
-          </Text>
+          {data?.isFavourite
+            ? icon.heart({ color: "red" })
+            : icon.hearto({ color: "red" })}
         </TouchableOpacity>
       </ImageBackground>
 
       <Text style={styles.productName}>{data?.name}</Text>
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        <Text>
+        <View>
           {icon.star({ size: 20, color: "yellow" })}
-          {data?.evaluate}
-        </Text>
-        <Text>
+          <Text>{data?.evaluate}</Text>
+        </View>
+        <View>
           {icon.location({ size: 20, color: color.primary.main })}
-          {data?.distance}
-        </Text>
+          <Text>{data?.distance}</Text>
+        </View>
       </View>
 
       <Text style={styles.productPrice}>{data?.price}đ</Text>
@@ -104,10 +102,8 @@ const styles = StyleSheet.create({
     height: 35,
     borderRadius: "50%",
     backgroundColor: "#fff",
-  },
-  IconFavourite: {
-    lineHeight: 35,
-    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
   productName: {
     fontSize: 20,

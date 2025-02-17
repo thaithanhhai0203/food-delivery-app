@@ -111,10 +111,10 @@ const HomeScreen = () => {
           </View>
           <View style={{ flexDirection: "row" }}>
             <TouchableOpacity>
-              <Text>{icon.search({ size: 50, color: "#fff" })}</Text>
+              {icon.search({ size: 50, color: "#fff" })}
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text>{icon.notifications({ size: 50, color: "#fff" })}</Text>
+              {icon.notifications({ size: 50, color: "#fff" })}
             </TouchableOpacity>
           </View>
         </View>
