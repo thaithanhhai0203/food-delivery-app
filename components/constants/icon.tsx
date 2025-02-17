@@ -58,4 +58,7 @@ export const icon: { [key: string]: (props: any) => JSX.Element } = {
   cart: (props: any) => (
     <AntDesign name="shoppingcart" size={props.size || 24} {...props} />
   ),
+  checkDone: (props: any) => (
+    <Ionicons name="checkmark-done" size={props.size || 24} {...props} />
+  ),
 };
