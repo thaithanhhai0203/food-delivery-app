@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import onboarding1 from "@/assets/images/onboarding1.png";
-import onboarding2 from "@/assets/images/onboarding2.png";
-import onboarding3 from "@/assets/images/onboarding3.png";
+import onboarding1 from "@/assets/images/onboarding/onboarding1.png";
+import onboarding2 from "@/assets/images/onboarding/onboarding2.png";
+import onboarding3 from "@/assets/images/onboarding/onboarding3.png";
 import { color } from "@/components/constants/color";
 import { icon } from "@/components/constants/icon";
 import { useState } from "react";
@@ -20,6 +20,7 @@ interface ISlide {
   title: string;
   des: string;
 }
+
 const OnBoardingScreen = () => {
   const router = useRouter();
   const [slide, setSide] = useState(0);
@@ -71,7 +72,6 @@ const OnBoardingScreen = () => {
         resizeMode="cover"
         style={styles.imageBackground}
       >
-        {/* <Button title="Continue to Login" onPress={handleCompleteOnboarding} /> */}
         <View style={styles.introduce}>
           <View style={styles.textContainer}>
             <Text style={styles.title}>{slides[slide].title}</Text>
@@ -79,12 +79,13 @@ const OnBoardingScreen = () => {
 
             <View style={styles.dashContainer}>
               {slides.map((item, index) => (
-                <Text key={index} style={styles.dash}>
+                <View key={index}>
                   {icon.dash({
                     color: index === slide ? "#999" : color.neutral[10],
                     size: 60,
+                    marginHorizontal: 5,
                   })}
-                </Text>
+                </View>
               ))}
             </View>
           </View>
@@ -101,7 +102,7 @@ const OnBoardingScreen = () => {
                 style={{ flexDirection: "row", alignItems: "center" }}
               >
                 <Text style={styles.btnText}>Next</Text>
-                <Text>{icon.next({ color: color.neutral[10] })}</Text>
+                {icon.next({ color: color.neutral[10] })}
               </TouchableOpacity>
             </View>
           ) : (
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
   },
   introduce: {
     width: "90%",
-    height: 400,
+    height: 430,
     marginTop: "85%",
     marginHorizontal: "auto",
     alignItems: "center",

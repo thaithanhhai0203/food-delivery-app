@@ -30,7 +30,7 @@ const ResetPasswordScreen = () => {
   };
 
   const handleLogin = () => {
-    router.push("/login");
+    router.replace("/login");
   };
 
   return (
