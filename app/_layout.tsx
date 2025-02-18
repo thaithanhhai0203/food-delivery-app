@@ -36,6 +36,10 @@ export default function RootLayout() {
         name="product-detail/[id]"
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="chat-detail/[id]"
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="personal-data" options={{ headerShown: false }} />
       <Stack.Screen name="settings" options={{ headerShown: false }} />

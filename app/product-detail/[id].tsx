@@ -36,7 +36,7 @@ const ProductDetailScreen = () => {
   const { id } = useLocalSearchParams();
 
   const [quantity, setQuantity] = useState(1);
-  console.log("product id:", id);
+  // console.log("product id:", id);
 
   const product = {
     id: 1,
@@ -89,7 +89,7 @@ const ProductDetailScreen = () => {
 
   const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollY = e.nativeEvent.contentOffset.y;
-    console.log("scrollY: ", scrollY);
+    // console.log("scrollY: ", scrollY);
   };
 
   return (

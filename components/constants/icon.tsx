@@ -1,4 +1,12 @@
-import { Feather, Octicons, Ionicons, AntDesign, FontAwesome6, FontAwesome5 } from "@expo/vector-icons";
+import {
+  Feather,
+  Octicons,
+  Ionicons,
+  AntDesign,
+  FontAwesome6,
+  FontAwesome5,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 export const icon: { [key: string]: (props: any) => JSX.Element } = {
   index: (props: any) => <Feather name="home" size={24} {...props} />,
@@ -60,5 +68,20 @@ export const icon: { [key: string]: (props: any) => JSX.Element } = {
   ),
   checkDone: (props: any) => (
     <Ionicons name="checkmark-done" size={props.size || 24} {...props} />
+  ),
+  _back: (props: any) => (
+    <Ionicons name="chevron-back" size={props.size || 24} {...props} />
+  ),
+  phone: (props: any) => (
+    <Feather name="phone" size={props.size || 24} {...props} />
+  ),
+  send: (props: any) => (
+    <MaterialIcons name="send" size={props.size || 24} {...props} />
+  ),
+  emoticon: (props: any) => (
+    <MaterialIcons name="insert-emoticon" size={props.size || 24} {...props} />
+  ),
+  upload: (props: any) => (
+    <Feather  name="upload" size={props.size || 24} {...props} />
   ),
 };
