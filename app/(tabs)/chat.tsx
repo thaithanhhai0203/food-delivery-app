@@ -6,6 +6,7 @@ import {
   Text,
   View,
   ImageBackground,
+  TouchableOpacity,
 } from "react-native";
 import { icon } from "@/components/constants/icon";
 import { color } from "@/components/constants/color";
@@ -43,6 +44,13 @@ const ChatScreen = () => {
       status: "received",
     },
   ];
+
+  const handleChatDetail = (id: number) => {
+    router.push({
+      pathname: "/chat-detail/[id]",
+      params: { id },
+    });
+  };
   return (
     <ImageBackground source={background} style={styles.container}>
       <Text style={styles.title}>Chat List</Text>
@@ -50,7 +58,11 @@ const ChatScreen = () => {
       <Text style={styles.subTitle}>All Message</Text>
 
       {messages.map((item, index) => (
-        <View key={index} style={styles.messageContainer}>
+        <TouchableOpacity
+          key={index}
+          onPress={() => handleChatDetail(item?.id)}
+          style={styles.messageContainer}
+        >
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Image source={item?.avatar} />
 
@@ -85,7 +97,7 @@ const ChatScreen = () => {
               ""
             )}
           </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </ImageBackground>
   );
