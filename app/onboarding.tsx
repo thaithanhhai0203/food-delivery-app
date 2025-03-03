@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
 import {
-  Button,
   ImageBackground,
   StyleSheet,
   Text,
@@ -12,7 +11,7 @@ import onboarding2 from "@/assets/images/onboarding/onboarding2.png";
 import onboarding3 from "@/assets/images/onboarding/onboarding3.png";
 import { color } from "@/components/constants/color";
 import { icon } from "@/components/constants/icon";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface ISlide {
   id: number;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Stack, useRouter } from "expo-router";
 
 export default function RootLayout() {
