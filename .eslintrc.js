@@ -1,5 +1,11 @@
 // https://docs.expo.dev/guides/using-eslint/
 module.exports = {
-  extends: 'expo',
-  ignorePatterns: ['/dist/*'],
+  env: {
+    node: true,
+  },
+  extends: ["expo", "prettier"],
+  ignorePatterns: ["/dist/*"],
+  rules: {
+    "prettier/prettier": "warn",
+  },
 };

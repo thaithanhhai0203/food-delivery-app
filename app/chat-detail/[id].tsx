@@ -4,22 +4,13 @@ import {
   View,
   StyleSheet,
   Text,
-  Image,
   TouchableOpacity,
   TextInput,
-  Modal,
 } from "react-native";
-import {
-  GiftedChat,
-  InputToolbar,
-  Send,
-  IMessage,
-} from "react-native-gifted-chat";
+import { GiftedChat, IMessage } from "react-native-gifted-chat";
 import background from "@/assets/images/chat-list/background.png";
 import avatar from "@/assets/images/profile/user1/avatar.png";
 import { ImageBackground } from "react-native";
-import DocumentPicker from "react-native-document-picker";
-// import EmojiPicker from "react-native-emoji-picker";
 import { color } from "@/components/constants/color";
 import { useRouter } from "expo-router";
 
@@ -47,52 +38,6 @@ const ChatDetailScreen = () => {
       GiftedChat.append(previousMessages, newMessages)
     );
   }, []);
-
-  // const addEmojiToMessage = (emoji) => {
-  //   setShowPicker(false);
-  //   console.log(emoji);
-
-  // const newMessage = {
-  //   _id: Math.random().toString(),
-  //   text: emoji.native, // Lấy emoji được chọn
-  //   createdAt: new Date(),
-  //   user: {
-  //     _id: 1,
-  //     name: "User",
-  //   },
-  // };
-  // onSend([newMessage]);
-  // };
-
-  // const pickDocument = async () => {
-  //   try {
-  //     const result = await DocumentPicker.pick({
-  //       type: [DocumentPicker.types.allFiles], // Cho phép chọn tất cả loại file
-  //     });
-  //     console.log(result);
-
-  //     // if (result) {
-  //     //   const fileMessage: IMessage = {
-  //     //     _id: Math.random().toString(36).substring(7),
-  //     //     text: result[0].name,
-  //     //     createdAt: new Date(),
-  //     //     user: { _id: 1 },
-  //     //     file: {
-  //     //       uri: result[0].uri,
-  //     //       type: result[0].type,
-  //     //       name: result[0].name,
-  //     //     },
-  //     //   };
-  //     //   onSend([fileMessage]);
-  //     // }
-  //   } catch (err) {
-  //     if (DocumentPicker.isCancel(err)) {
-  //       console.log("User cancelled file picker");
-  //     } else {
-  //       console.error("Document Picker Error: ", err);
-  //     }
-  //   }
-  // };
 
   return (
     <ImageBackground source={background} style={styles.container}>
@@ -137,12 +82,6 @@ const ChatDetailScreen = () => {
           </View>
         )}
       />
-
-      {/* <TouchableOpacity onPress={() => setShowPicker(!showPicker)}>
-        <Text style={{ fontSize: 20 }}>😀 Chọn Emoji</Text>
-      </TouchableOpacity>
-
-      {showPicker && <EmojiPicker onEmojiSelected={addEmojiToMessage} />} */}
     </ImageBackground>
   );
 };

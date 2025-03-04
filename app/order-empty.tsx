@@ -2,6 +2,7 @@ import { Entypo, Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import orderEmpty from "@/assets/images/order-empty.png"
 
 const EmptyCartScreen = () => {
     const router = useRouter();
@@ -21,7 +22,7 @@ const EmptyCartScreen = () => {
             {/* Main Content */}
             <View style={styles.emptyContent}>
                 <Image
-                    source={require("../assets/images/order-empty.png")}
+                    source={orderEmpty}
                     style={styles.image}
                 />
                 <Text style={styles.emptyTitle}>Ouch! Hungry</Text>

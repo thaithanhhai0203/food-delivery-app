@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Stack, useRouter } from "expo-router";
 
 export default function RootLayout() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [hasOnboarded, setHasOnboarded] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const checkUserState = async () => {

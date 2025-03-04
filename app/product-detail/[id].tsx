@@ -2,12 +2,8 @@ import {
   View,
   Text,
   ScrollView,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-  ImageBackground,
   Image,
   StyleSheet,
-  ImageSourcePropType,
   TouchableOpacity,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -19,24 +15,25 @@ import { icon } from "@/components/constants/icon";
 import { color } from "@/components/constants/color";
 import Product from "@/components/Product";
 
-interface IProductDetail {
-  data: {
-    id: number;
-    name: string;
-    img: Array<ImageSourcePropType>;
-    price: string;
-    isFavourite: boolean;
-    evaluate: string;
-    distance: string;
-  };
-}
+// interface IProductDetail {
+//   data: {
+//     id: number;
+//     name: string;
+//     img: Array<ImageSourcePropType>;
+//     price: string;
+//     isFavourite: boolean;
+//     evaluate: string;
+//     distance: string;
+//   };
+// }
 
 const ProductDetailScreen = () => {
   const router = useRouter();
   const { id } = useLocalSearchParams();
 
+  console.log(id);
+
   const [quantity, setQuantity] = useState(1);
-  // console.log("product id:", id);
 
   const product = {
     id: 1,
@@ -87,14 +84,9 @@ const ProductDetailScreen = () => {
     },
   ];
 
-  const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const scrollY = e.nativeEvent.contentOffset.y;
-    // console.log("scrollY: ", scrollY);
-  };
-
   return (
     <View style={styles.container}>
-      <ScrollView onScroll={handleScroll}>
+      <ScrollView>
         <Swiper
           showsPagination
           autoplay
@@ -274,10 +266,7 @@ const ProductDetailScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity
-          style={styles.tabCartButton}
-          activeOpacity={0.5}
-        >
+        <TouchableOpacity style={styles.tabCartButton} activeOpacity={0.5}>
           {icon.cart({ size: 20, color: "#fff" })}
           <Text style={{ fontSize: 20, color: "#fff", marginLeft: 10 }}>
             Add to Cart
@@ -323,7 +312,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  tabCartButton:{
+  tabCartButton: {
     backgroundColor: color.primary.main,
     flexDirection: "row",
     paddingVertical: 15,
@@ -331,5 +320,5 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
-  }
+  },
 });

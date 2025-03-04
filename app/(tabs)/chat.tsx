@@ -1,6 +1,6 @@
+import React from "react";
 import { useRouter } from "expo-router";
 import {
-  Button,
   Image,
   StyleSheet,
   Text,

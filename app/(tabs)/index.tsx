@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
 import {
-  Button,
   Image,
   ImageBackground,
   StyleSheet,
@@ -9,7 +8,7 @@ import {
   View,
   ScrollView,
 } from "react-native";
-import { useState } from "react";
+import React, { useState } from "react";
 import { icon } from "@/components/constants/icon";
 import { color } from "@/components/constants/color";
 import header from "@/assets/images/product-list/header.png";

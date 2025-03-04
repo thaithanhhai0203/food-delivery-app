@@ -1,88 +1,55 @@
-import React from "react";
+import React, { ComponentType } from "react";
 import {
   Feather,
   Octicons,
   Ionicons,
   AntDesign,
-  FontAwesome6,
   FontAwesome5,
+  FontAwesome6,
   MaterialIcons,
 } from "@expo/vector-icons";
 
-export const icon: { [key: string]: (props: any) => JSX.Element } = {
-  index: (props: any) => <Feather name="home" size={24} {...props} />,
-  order: (props: any) => <Feather name="shopping-cart" size={24} {...props} />,
-  chat: (props: any) => <Feather name="message-square" size={24} {...props} />,
-  profile: (props: any) => <Feather name="user" size={24} {...props} />,
-  next: (props: any) => (
-    <Feather name="arrow-right" size={props.size || 24} {...props} />
-  ),
-  dash: (props: any) => (
-    <Octicons name="dash" size={props.size || 24} {...props} />
-  ),
-  location: (props: any) => (
-    <Ionicons name="location-outline" size={props.size || 24} {...props} />
-  ),
-  search: (props: any) => (
-    <Ionicons name="search-circle-outline" size={props.size || 24} {...props} />
-  ),
-  notifications: (props: any) => (
-    <Ionicons
-      name="notifications-circle-outline"
-      size={props.size || 24}
-      {...props}
-    />
-  ),
-  down: (props: any) => (
-    <AntDesign name="down" size={props.size || 24} {...props} />
-  ),
-  hearto: (props: any) => (
-    <AntDesign name="hearto" size={props.size || 24} {...props} />
-  ),
-  heart: (props: any) => (
-    <AntDesign name="heart" size={props.size || 24} {...props} />
-  ),
-  star: (props: any) => (
-    <AntDesign name="star" size={props.size || 24} {...props} />
-  ),
-  back: (props: any) => (
-    <Ionicons
-      name="chevron-back-circle-outline"
-      size={props.size || 24}
-      {...props}
-    />
-  ),
-  dollar: (props: any) => (
-    <Feather name="dollar-sign" size={props.size || 24} {...props} />
-  ),
-  time: (props: any) => (
-    <Ionicons name="time" size={props.size || 24} {...props} />
-  ),
-  add: (props: any) => (
-    <FontAwesome6 name="add" size={props.size || 24} {...props} />
-  ),
-  minus: (props: any) => (
-    <FontAwesome5 name="minus" size={props.size || 24} {...props} />
-  ),
-  cart: (props: any) => (
-    <AntDesign name="shoppingcart" size={props.size || 24} {...props} />
-  ),
-  checkDone: (props: any) => (
-    <Ionicons name="checkmark-done" size={props.size || 24} {...props} />
-  ),
-  _back: (props: any) => (
-    <Ionicons name="chevron-back" size={props.size || 24} {...props} />
-  ),
-  phone: (props: any) => (
-    <Feather name="phone" size={props.size || 24} {...props} />
-  ),
-  send: (props: any) => (
-    <MaterialIcons name="send" size={props.size || 24} {...props} />
-  ),
-  emoticon: (props: any) => (
-    <MaterialIcons name="insert-emoticon" size={props.size || 24} {...props} />
-  ),
-  upload: (props: any) => (
-    <Feather  name="upload" size={props.size || 24} {...props} />
-  ),
+type IconProps =
+  | React.ComponentProps<typeof Feather>
+  | React.ComponentProps<typeof Octicons>
+  | React.ComponentProps<typeof Ionicons>
+  | React.ComponentProps<typeof AntDesign>
+  | React.ComponentProps<typeof FontAwesome5>
+  | React.ComponentProps<typeof FontAwesome6>
+  | React.ComponentProps<typeof MaterialIcons>;
+
+const createIcon = (Component: ComponentType<IconProps>, name: string) => {
+  const IconComponent = (props: IconProps) => (
+    <Component name={name} size={props.size || 24} {...props} />
+  );
+  IconComponent.displayName = `Icon(${name})`;
+  return IconComponent;
+};
+
+export const icon: Record<string, (props: IconProps) => JSX.Element> = {
+  index: createIcon(Feather, "home"),
+  order: createIcon(Feather, "shopping-cart"),
+  chat: createIcon(Feather, "message-square"),
+  profile: createIcon(Feather, "user"),
+  next: createIcon(Feather, "arrow-right"),
+  dash: createIcon(Octicons, "dash"),
+  location: createIcon(Ionicons, "location-outline"),
+  search: createIcon(Ionicons, "search-circle-outline"),
+  notifications: createIcon(Ionicons, "notifications-circle-outline"),
+  down: createIcon(AntDesign, "down"),
+  hearto: createIcon(AntDesign, "hearto"),
+  heart: createIcon(AntDesign, "heart"),
+  star: createIcon(AntDesign, "star"),
+  back: createIcon(Ionicons, "chevron-back-circle-outline"),
+  dollar: createIcon(Feather, "dollar-sign"),
+  time: createIcon(Ionicons, "time"),
+  add: createIcon(FontAwesome6, "add"),
+  minus: createIcon(FontAwesome5, "minus"),
+  cart: createIcon(AntDesign, "shoppingcart"),
+  checkDone: createIcon(Ionicons, "checkmark-done"),
+  _back: createIcon(Ionicons, "chevron-back"),
+  phone: createIcon(Feather, "phone"),
+  send: createIcon(MaterialIcons, "send"),
+  emoticon: createIcon(MaterialIcons, "insert-emoticon"),
+  upload: createIcon(Feather, "upload"),
 };

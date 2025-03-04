@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { icon } from "@/components/constants/icon";
 import { color } from "@/components/constants/color";
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "expo-router";
 
 interface IProps {
