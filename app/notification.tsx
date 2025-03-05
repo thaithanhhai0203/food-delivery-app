@@ -4,7 +4,7 @@ import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { NotificationType } from "@/enum";
 
-interface NotificationProps {
+interface INotificationProps {
     id: number;
     icon: string;
     title: string;
@@ -22,7 +22,7 @@ const notifications = [
 
 export default function NotificationScreen() {
     const router = useRouter();
-    const renderNotification = ({ type, icon, title, description }: NotificationProps) => {
+    const renderNotification = ({ type, icon, title, description }: INotificationProps) => {
         let iconColor = "#000";
 
         switch (type) {

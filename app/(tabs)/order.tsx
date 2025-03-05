@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import CartItem from "@/components/CartItem";
 
-interface CartItemType {
+interface ICartItemType {
     id: number;
     title: string;
     price: string;
@@ -12,7 +12,7 @@ interface CartItemType {
 }
 
 const CartScreen = () => {
-    const [cartItems, setCartItems] = useState<CartItemType[]>([
+    const [cartItems, setCartItems] = useState<ICartItemType[]>([
         {
             id: 1,
             title: "Burger With Meat",

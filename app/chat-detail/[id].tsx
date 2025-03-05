@@ -1,4 +1,3 @@
-import { icon } from "@/components/constants/icon";
 import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
@@ -7,16 +6,22 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import { GiftedChat, IMessage } from "react-native-gifted-chat";
+import {
+  GiftedChat,
+  IMessage,
+  InputToolbarProps,
+} from "react-native-gifted-chat";
 import background from "@/assets/images/chat-list/background.png";
 import avatar from "@/assets/images/profile/user1/avatar.png";
 import { ImageBackground } from "react-native";
+import { icon } from "@/components/constants/icon";
 import { color } from "@/components/constants/color";
 import { useRouter } from "expo-router";
 
 const ChatDetailScreen = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<IMessage[]>([]);
+  const [inputText, setInputText] = useState("");
 
   useEffect(() => {
     setMessages([
@@ -37,6 +42,7 @@ const ChatDetailScreen = () => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, newMessages)
     );
+    setInputText("");
   }, []);
 
   return (
@@ -65,22 +71,38 @@ const ChatDetailScreen = () => {
         onSend={(messages) => onSend(messages)}
         alwaysShowSend={true}
         user={{ _id: 1 }}
-        renderInputToolbar={(props) => (
-          <View style={styles.customInputToolbar}>
-            <TextInput
-              style={styles.input}
-              placeholder="Type a message..."
-              value={props.text}
-              onChangeText={(text) => props.onTextChanged(text)}
-            />
-            <TouchableOpacity
-              onPress={() => props.onSend({ text: props.text }, true)}
-              style={styles.sendButton}
-            >
-              {icon.send({ size: 30, color: "#fff" })}
-            </TouchableOpacity>
-          </View>
-        )}
+        renderInputToolbar={(props: InputToolbarProps<IMessage>) => {
+          // console.log("props", props.messages);
+          console.log("props.text", props);
+          return (
+            <View style={styles.customInputToolbar}>
+              <TextInput
+                style={styles.input}
+                placeholder="Type a message..."
+                value={inputText}
+                onChangeText={setInputText}
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  if (inputText.trim().length > 0) {
+                    onSend([
+                      {
+                        _id: Math.random().toString(),
+                        text: inputText,
+                        createdAt: new Date(),
+                        user: { _id: 1 },
+                      },
+                    ]);
+                    setInputText("");
+                  }
+                }}
+                style={styles.sendButton}
+              >
+                {icon.send({ size: 30, color: "#fff" })}
+              </TouchableOpacity>
+            </View>
+          );
+        }}
       />
     </ImageBackground>
   );

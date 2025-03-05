@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import {
   ImageBackground,
+  ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -15,7 +16,7 @@ import React, { useState } from "react";
 
 interface ISlide {
   id: number;
-  img: any;
+  img: ImageSourcePropType;
   title: string;
   des: string;
 }

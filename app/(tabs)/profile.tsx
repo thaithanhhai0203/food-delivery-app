@@ -9,7 +9,7 @@ import {
   Modal,
 } from "react-native";
 import { MaterialIcons, Feather, Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { Href, useRouter } from "expo-router";
 
 const ProfileScreen = () => {
   const router = useRouter();
@@ -21,13 +21,13 @@ const ProfileScreen = () => {
     router.push("/login");
   };
 
-  interface ProfileOptionProps {
+  interface IProfileOptionProps {
     icon: keyof typeof Feather.glyphMap;
     text: string;
-    routerUrl?: string;
+    routerUrl?: Href;
   }
 
-  const ProfileOption: React.FC<ProfileOptionProps> = ({
+  const ProfileOption: React.FC<IProfileOptionProps> = ({
     icon,
     text,
     routerUrl,
@@ -94,9 +94,9 @@ const ProfileScreen = () => {
         <ProfileOption
           icon="user"
           text="Personal Data"
-          routerUrl="personal-data"
+          routerUrl="/personal-data"
         />
-        <ProfileOption icon="settings" text="Settings" routerUrl="settings" />
+        <ProfileOption icon="settings" text="Settings" routerUrl="/settings" />
         <ProfileOption icon="credit-card" text="Extra Card" />
       </View>
 
@@ -105,7 +105,7 @@ const ProfileScreen = () => {
         <ProfileOption
           icon="help-circle"
           text="Help Center"
-          routerUrl="help-center"
+          routerUrl="/help-center"
         />
         <ProfileOption icon="trash-2" text="Request Account Deletion" />
         <ProfileOption icon="user-plus" text="Add another account" />

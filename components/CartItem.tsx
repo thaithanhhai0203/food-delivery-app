@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
-interface CartItemProps {
+interface ICartItemProps {
     item: {
         id: number;
         title: string;
@@ -21,7 +21,7 @@ interface CartItemProps {
     onDecrease: () => void;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ item, onRemove, onIncrease, onDecrease }) => {
+const CartItem: React.FC<ICartItemProps> = ({ item, onRemove, onIncrease, onDecrease }) => {
     return (
         <View style={styles.cartItem}>
             <Image source={{ uri: item.image }} style={styles.itemImage} />
