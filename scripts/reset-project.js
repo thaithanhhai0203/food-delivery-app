@@ -8,6 +8,7 @@
 
 import fs from "fs";
 import path from "path";
+import process from "node:process";
 
 const root = process.cwd();
 const oldDirs = ["app", "components", "hooks", "constants", "scripts"];

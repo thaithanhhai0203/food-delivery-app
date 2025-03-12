@@ -35,6 +35,7 @@ export const icon: Record<string, (props: IconProps) => JSX.Element> = {
   dash: createIcon(Octicons, "dash"),
   location: createIcon(Ionicons, "location-outline"),
   search: createIcon(Ionicons, "search-circle-outline"),
+  _search: createIcon(Ionicons, "search"),
   notifications: createIcon(Ionicons, "notifications-circle-outline"),
   down: createIcon(AntDesign, "down"),
   hearto: createIcon(AntDesign, "hearto"),
@@ -52,4 +53,7 @@ export const icon: Record<string, (props: IconProps) => JSX.Element> = {
   send: createIcon(MaterialIcons, "send"),
   emoticon: createIcon(MaterialIcons, "insert-emoticon"),
   upload: createIcon(Feather, "upload"),
+  grid: createIcon(Ionicons, "grid"),
+  cash: createIcon(Ionicons, "cash"),
+  person: createIcon(Ionicons, "person"),
 };

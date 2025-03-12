@@ -1,5 +1,6 @@
 // https://docs.expo.dev/guides/using-eslint/
-module.exports = {
+
+export const module = {
   env: {
     node: true,
   },

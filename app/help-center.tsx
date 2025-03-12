@@ -49,14 +49,14 @@ const HelpCenterScreen = () => {
     <View style={styles.container}>
       {/* Header */}
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-        <Ionicons name="arrow-back" size={24} color="black" />
+        {icon._back({color: "#000" })}
       </TouchableOpacity>
       <Text style={styles.header}>Help Center</Text>
       <Text style={styles.subHeader}>Hi, how we can help you?</Text>
 
       {/* Search Bar */}
       <View style={styles.searchContainer}>
-        <Ionicons name="search" size={20} color="#888" />
+        {icon._search({size: 20,color: "#888"})}
         <TextInput
           style={styles.searchInput}
           placeholder="Search"
@@ -71,13 +71,7 @@ const HelpCenterScreen = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.card}>
-            {}
-            <Ionicons
-              name={item.icon as any}
-              size={24}
-              color={item.color}
-              style={styles.icon}
-            />
+            {icon[item?.icon]({ color: item.color, style: styles.icon })}
             <View style={styles.cardContent}>
               <Text style={styles.cardTitle}>{item.title}</Text>
               <Text style={styles.cardDescription}>{item.description}</Text>
