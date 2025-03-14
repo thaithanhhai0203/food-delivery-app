@@ -8,8 +8,8 @@ import {
   ScrollView,
   Modal,
 } from "react-native";
-import { MaterialIcons, Feather, Ionicons } from "@expo/vector-icons";
 import { Href, useRouter } from "expo-router";
+import { icons } from "@/components/constants/icon";
 
 const ProfileScreen = () => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const ProfileScreen = () => {
   };
 
   interface IProfileOptionProps {
-    icon: keyof typeof Feather.glyphMap;
+    icon: string;
     text: string;
     routerUrl?: Href;
   }
@@ -40,9 +40,10 @@ const ProfileScreen = () => {
         }
       }}
     >
-      <Feather name={icon} size={20} color="#333" />
+      {/* <Feather name={icon} size={20} color="#333" /> */}
+      {icons[icon]({ size: 20, color: "#333" })}
       <Text style={styles.optionText}>{text}</Text>
-      <Ionicons name="chevron-forward" size={20} color="#ccc" />
+      {icons.forward({ size: 20, color: "#ccc" })}
     </TouchableOpacity>
   );
 
@@ -57,7 +58,7 @@ const ProfileScreen = () => {
           style={styles.profileImage}
         />
         <TouchableOpacity style={styles.cameraIcon}>
-          <MaterialIcons name="photo-camera" size={16} color="white" />
+          {icons.camera({ size: 16, color: "#fff" })}
         </TouchableOpacity>
         <Text style={styles.profileName}>Albert Stevano Bajefski</Text>
         <Text style={styles.profileEmail}>Albertstevano@gmail.com</Text>
@@ -92,23 +93,23 @@ const ProfileScreen = () => {
       {/* Profile Options */}
       <View style={styles.section}>
         <ProfileOption
-          icon="user"
+          icon="userOutline"
           text="Personal Data"
           routerUrl="/personal-data"
         />
         <ProfileOption icon="settings" text="Settings" routerUrl="/settings" />
-        <ProfileOption icon="credit-card" text="Extra Card" />
+        <ProfileOption icon="creditCard" text="Extra Card" />
       </View>
 
       {/* Support Options */}
       <View style={styles.section}>
         <ProfileOption
-          icon="help-circle"
+          icon="helpCircle"
           text="Help Center"
           routerUrl="/help-center"
         />
-        <ProfileOption icon="trash-2" text="Request Account Deletion" />
-        <ProfileOption icon="user-plus" text="Add another account" />
+        <ProfileOption icon="trash" text="Request Account Deletion" />
+        <ProfileOption icon="userOther" text="Add another account" />
       </View>
 
       {/* Sign Out */}
@@ -116,7 +117,7 @@ const ProfileScreen = () => {
         style={styles.signOutButton}
         onPress={() => setModalVisible(true)}
       >
-        <Feather name="log-out" size={20} color="red" />
+        {icons.logOut({ size: 20, color: "red" })}
         <Text style={styles.signOutText}>Sign Out</Text>
       </TouchableOpacity>
 
@@ -133,7 +134,7 @@ const ProfileScreen = () => {
               style={styles.closeButton}
               onPress={() => setModalVisible(false)}
             >
-              <Ionicons name="close" size={24} color="black" />
+              {icons.close({})}
             </TouchableOpacity>
 
             <Text style={styles.modalTitle}>Sign Out</Text>

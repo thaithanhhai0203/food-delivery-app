@@ -8,8 +8,8 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-import { icon } from "@/components/constants/icon";
-import { color } from "@/components/constants/color";
+import { icons } from "@/components/constants/icon";
+import { colors } from "@/components/constants/color";
 import avatar from "@/assets/images/profile/user1/avatar.png";
 import background from "@/assets/images/chat-list/background.png";
 
@@ -90,7 +90,7 @@ const ChatScreen = () => {
             <Text style={{ marginBottom: 5 }}>{item?.time}</Text>
 
             {item?.unread === 0 && item?.status === "seen" ? (
-              icon.checkDone({ color: color.primary.main })
+              icons.checkDone({ color: colors.primary.main })
             ) : item?.unread > 0 && item?.status === "unseen" ? (
               <Text style={styles.textUnread}>3</Text>
             ) : (
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   textUnread: {
     fontSize: 15,
-    backgroundColor: color.primary.main,
+    backgroundColor: colors.primary.main,
     color: "#fff",
     width: 20,
     height: 20,

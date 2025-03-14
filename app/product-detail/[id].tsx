@@ -11,8 +11,8 @@ import React, { useState } from "react";
 import Swiper from "react-native-swiper";
 import image1 from "@/assets/images/product-detail/product1/image1.png";
 import image2 from "@/assets/images/product-detail/product1/image2.png";
-import { icon } from "@/components/constants/icon";
-import { color } from "@/components/constants/color";
+import { icons } from "@/components/constants/icon";
+import { colors } from "@/components/constants/color";
 import Product from "@/components/Product";
 
 // interface IProductDetail {
@@ -97,7 +97,7 @@ const ProductDetailScreen = () => {
             borderRadius: 4,
           }}
           activeDotStyle={{
-            backgroundColor: color.primary.main,
+            backgroundColor: colors.primary.main,
             width: 50,
             height: 8,
             borderRadius: 4,
@@ -125,7 +125,7 @@ const ProductDetailScreen = () => {
           }}
         >
           <TouchableOpacity onPress={() => router.back()}>
-            {icon.back({ size: 40, color: "#fff" })}
+            {icons.backOutline({ size: 40, color: "#fff" })}
           </TouchableOpacity>
           <Text style={{ fontSize: 20, fontWeight: "800", color: "#fff" }}>
             About This Menu
@@ -143,7 +143,7 @@ const ProductDetailScreen = () => {
                 alignItems: "center",
               }}
             >
-              {icon.heart({ size: 20, color: "red" })}
+              {icons.heart({ size: 20, color: "red" })}
             </TouchableOpacity>
           ) : (
             <TouchableOpacity
@@ -157,7 +157,7 @@ const ProductDetailScreen = () => {
                 alignItems: "center",
               }}
             >
-              {icon.hearto({ size: 20, color: "#fff" })}
+              {icons.hearto({ size: 20, color: "#fff" })}
             </TouchableOpacity>
           )}
         </View>
@@ -170,7 +170,7 @@ const ProductDetailScreen = () => {
             style={{
               fontSize: 25,
               fontWeight: "800",
-              color: color.primary.main,
+              color: colors.primary.main,
               marginBottom: 10,
             }}
           >
@@ -186,17 +186,17 @@ const ProductDetailScreen = () => {
             }}
           >
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              {icon.dollar({ size: 20, color: color.primary.main })}
+              {icons.dollar({ size: 20, color: colors.primary.main })}
               <Text style={{ fontSize: 20, color: "#999" }}>Free Delivery</Text>
             </View>
 
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              {icon.time({ size: 20, color: color.primary.main })}
+              {icons.time({ size: 20, color: colors.primary.main })}
               <Text style={{ fontSize: 20, color: "#999" }}>20-30</Text>
             </View>
 
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              {icon.star({ size: 20, color: color.primary.main })}
+              {icons.star({ size: 20, color: colors.primary.main })}
               <Text style={{ fontSize: 20, color: "#999" }}>
                 {product?.evaluate}
               </Text>
@@ -231,7 +231,7 @@ const ProductDetailScreen = () => {
             <Text style={{ fontSize: 20, fontWeight: "600" }}>
               Recomended For You
             </Text>
-            <Text style={{ fontSize: 20, color: color.primary.main }}>
+            <Text style={{ fontSize: 20, color: colors.primary.main }}>
               See All
             </Text>
           </View>
@@ -253,7 +253,7 @@ const ProductDetailScreen = () => {
             style={styles.tabQuantityButton}
             onPress={() => setQuantity(quantity > 1 ? quantity - 1 : quantity)}
           >
-            {icon.minus({ size: 30 })}
+            {icons.remove({ size: 50, color: "#999" })}
           </TouchableOpacity>
 
           <Text style={{ fontSize: 30, marginHorizontal: 5 }}>{quantity}</Text>
@@ -262,12 +262,12 @@ const ProductDetailScreen = () => {
             style={styles.tabQuantityButton}
             onPress={() => setQuantity(quantity + 1)}
           >
-            {icon.add({ size: 30 })}
+            {icons.add({ size: 50, color: "#999" })}
           </TouchableOpacity>
         </View>
 
         <TouchableOpacity style={styles.tabCartButton} activeOpacity={0.5}>
-          {icon.cart({ size: 20, color: "#fff" })}
+          {icons.cart({ size: 20, color: "#fff" })}
           <Text style={{ fontSize: 20, color: "#fff", marginLeft: 10 }}>
             Add to Cart
           </Text>
@@ -304,16 +304,9 @@ const styles = StyleSheet.create({
   },
   tabQuantityButton: {
     marginHorizontal: 10,
-    width: 50,
-    height: 50,
-    borderColor: "#999",
-    borderWidth: 1,
-    borderRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
   },
   tabCartButton: {
-    backgroundColor: color.primary.main,
+    backgroundColor: colors.primary.main,
     flexDirection: "row",
     paddingVertical: 15,
     paddingHorizontal: 30,

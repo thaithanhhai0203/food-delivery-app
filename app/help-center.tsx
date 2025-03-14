@@ -7,9 +7,8 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { icon } from "@/components/constants/icon";
+import { icons } from "@/components/constants/icon";
 
 const helpTopics = [
   {
@@ -49,14 +48,14 @@ const HelpCenterScreen = () => {
     <View style={styles.container}>
       {/* Header */}
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-        {icon._back({color: "#000" })}
+        {icons.back({color: "#000" })}
       </TouchableOpacity>
       <Text style={styles.header}>Help Center</Text>
       <Text style={styles.subHeader}>Hi, how we can help you?</Text>
 
       {/* Search Bar */}
       <View style={styles.searchContainer}>
-        {icon._search({size: 20,color: "#888"})}
+        {icons.search({size: 20,color: "#888"})}
         <TextInput
           style={styles.searchInput}
           placeholder="Search"
@@ -71,7 +70,7 @@ const HelpCenterScreen = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.card}>
-            {icon[item?.icon]({ color: item.color, style: styles.icon })}
+            {icons[item?.icon]({ color: item.color, style: styles.icon })}
             <View style={styles.cardContent}>
               <Text style={styles.cardTitle}>{item.title}</Text>
               <Text style={styles.cardDescription}>{item.description}</Text>

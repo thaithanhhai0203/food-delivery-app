@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { NotificationType } from "@/enum";
+import { icons } from "@/components/constants/icon";
 
 interface INotificationProps {
   id: number;
@@ -28,14 +28,14 @@ const notifications = [
   },
   {
     id: 2,
-    icon: "check-circle",
+    icon: "checkCircle",
     title: "Your Order Has Been Taken by the Driver",
     description: "Recently!",
     type: NotificationType.SUCCESS,
   },
   {
     id: 3,
-    icon: "times-circle",
+    icon: "timesCircle",
     title: "Your Order Has Been Canceled",
     description: "19 Jun 2023",
     type: NotificationType.ERROR,
@@ -82,12 +82,13 @@ export default function NotificationScreen() {
 
     return (
       <View style={styles.notificationItem}>
-        <FontAwesome
+        {/* <FontAwesome
           name={icon as any}
           size={24}
           color={iconColor}
           style={styles.notificationIcon}
-        />
+        /> */}
+        {icons[icon]({ color: iconColor, style: styles.notificationIcon })}
         <View style={styles.notificationContent}>
           <Text style={styles.notificationTitle}>{title}</Text>
           <Text style={styles.notificationDescription}>{description}</Text>
@@ -102,11 +103,15 @@ export default function NotificationScreen() {
       <View style={styles.headerContainer}>
         <TouchableOpacity
           onPress={() => {
-            router.canGoBack() ? router.back() : router.push("/");
+            if (router.canGoBack()) {
+              router.back();
+            } else {
+              router.push("/");
+            }
           }}
           style={styles.backButton}
         >
-          <MaterialIcons name="arrow-back" size={28} color="#007BFF" />
+          {icons.back({ size: 28, color: "#007BFF" })}
         </TouchableOpacity>
         <Text style={styles.header}>Notifications</Text>
       </View>

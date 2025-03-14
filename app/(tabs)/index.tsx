@@ -9,8 +9,8 @@ import {
   ScrollView,
 } from "react-native";
 import React, { useState } from "react";
-import { icon } from "@/components/constants/icon";
-import { color } from "@/components/constants/color";
+import { icons } from "@/components/constants/icon";
+import { colors } from "@/components/constants/color";
 import header from "@/assets/images/product-list/header.png";
 import burger from "@/assets/images/product-list/burger.png";
 import taco from "@/assets/images/product-list/taco.png";
@@ -100,20 +100,20 @@ const HomeScreen = () => {
           <View>
             <TouchableOpacity>
               <Text style={{ color: "#fff" }}>
-                Your Location {icon.down({ size: 14 })}
+                Your Location {icons.down({ size: 14 })}
               </Text>
             </TouchableOpacity>
 
             <Text style={{ fontSize: 18, color: "#fff" }}>
-              {icon.location({ size: 18, color: "#fff" })} Cần Thơ
+              {icons.location({ size: 18, color: "#fff" })} Cần Thơ
             </Text>
           </View>
           <View style={{ flexDirection: "row" }}>
             <TouchableOpacity onPress={() => router.push("/search")}>
-              {icon.search({ size: 50, color: "#fff" })}
+              {icons.searchOutline({ size: 50, color: "#fff" })}
             </TouchableOpacity>
-            <TouchableOpacity>
-              {icon.notifications({ size: 50, color: "#fff" })}
+            <TouchableOpacity onPress={() => router.push("/notification")}>
+              {icons.notifications({ size: 50, color: "#fff" })}
             </TouchableOpacity>
           </View>
         </View>
@@ -130,7 +130,7 @@ const HomeScreen = () => {
           }}
         >
           <Text style={styles.categoryTitle}>Find by Category</Text>
-          <Text style={{ fontSize: 20, color: color.primary.main }}>
+          <Text style={{ fontSize: 20, color: colors.primary.main }}>
             See All
           </Text>
         </View>
@@ -147,7 +147,7 @@ const HomeScreen = () => {
               style={{
                 ...styles.categoryItem,
                 backgroundColor:
-                  category === item?.name ? color.primary.main : "#fff",
+                  category === item?.name ? colors.primary.main : "#fff",
               }}
               onPress={() => {
                 setCategory(item?.name);

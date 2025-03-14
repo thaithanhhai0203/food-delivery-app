@@ -9,9 +9,18 @@ const TabLayout = () => {
         name="index"
         options={{ title: "Home", headerShown: false }}
       />
-      <Tabs.Screen name="cart" options={{ title: "Cart",  headerShown: false  }} />
-      <Tabs.Screen name="chat" options={{ title: "Chat", headerShown: false }} />
-      <Tabs.Screen name="profile" options={{ title: "Profile",  headerShown: false  }} />
+      <Tabs.Screen
+        name="order"
+        options={{ title: "Order", headerShown: false }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{ title: "Chat", headerShown: false }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{ title: "Profile", headerShown: false }}
+      />
     </Tabs>
   );
 };

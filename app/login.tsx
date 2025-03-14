@@ -8,8 +8,8 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
-import { color } from "@/components/constants/color";
+import { colors } from "@/components/constants/color";
+import { icons } from "@/components/constants/icon";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -61,11 +61,9 @@ const LoginScreen = () => {
           style={styles.eyeIcon}
           onPress={() => setShowPassword(!showPassword)}
         >
-          <MaterialIcons
-            name={showPassword ? "visibility" : "visibility-off"}
-            size={24}
-            color="gray"
-          />
+          {showPassword
+            ? icons.visibility({ color: "gray" })
+            : icons.visibilityOff({ color: "gray" })}
         </TouchableOpacity>
       </View>
 
@@ -86,13 +84,13 @@ const LoginScreen = () => {
         <View style={styles.line} />
         <View style={styles.socialIcons}>
           <TouchableOpacity>
-            <FontAwesome name="google" size={30} color="#EA4335" />
+            {icons.google({ size: 30, color: "#EA4335" })}
           </TouchableOpacity>
           <TouchableOpacity>
-            <FontAwesome name="facebook" size={30} color="#1877F2" />
+            {icons.facebook({ size: 30, color: "#1877F2" })}
           </TouchableOpacity>
           <TouchableOpacity>
-            <FontAwesome name="apple" size={30} color="#000000" />
+            {icons.apple({ size: 30, color: "#000" })}
           </TouchableOpacity>
         </View>
       </View>
@@ -131,13 +129,13 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 14,
-    color: color.neutral[60],
+    color: colors.neutral[60],
     textAlign: "center",
     marginBottom: 50,
   },
   input: {
     height: 50,
-    borderColor: color.primary.border,
+    borderColor: colors.primary.border,
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 15,
@@ -153,13 +151,13 @@ const styles = StyleSheet.create({
     top: 15,
   },
   forgotPassword: {
-    color: color.primary.main,
+    color: colors.primary.main,
     fontSize: 14,
     textAlign: "right",
     marginBottom: 20,
   },
   signInButton: {
-    backgroundColor: color.primary.main,
+    backgroundColor: colors.primary.main,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
@@ -178,12 +176,12 @@ const styles = StyleSheet.create({
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: color.neutral[80],
+    backgroundColor: colors.neutral[80],
     marginHorizontal: 10,
   },
   socialText: {
     fontSize: 14,
-    color: color.neutral[60],
+    color: colors.neutral[60],
     marginBottom: 20,
   },
   socialIcons: {
@@ -193,11 +191,11 @@ const styles = StyleSheet.create({
   },
   registerText: {
     fontSize: 14,
-    color: color.neutral[60],
+    color: colors.neutral[60],
     textAlign: "center",
   },
   registerLink: {
-    color: color.primary.main,
+    color: colors.primary.main,
     fontWeight: "bold",
   },
 });

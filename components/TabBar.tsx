@@ -7,7 +7,7 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
-import { color } from "@/components/constants/color";
+import { colors } from "@/components/constants/color";
 
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const [dimensions, setDimensions] = useState({ height: 20, width: 100 });
@@ -84,7 +84,7 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             isFocused={isFocused}
             routeName={route.name}
             routeParams={route.params}
-            color={isFocused ? color.primary.hover : "#383838"}
+            color={isFocused ? colors.primary.hover : "#383838"}
             label={label}
             options={options}
           />

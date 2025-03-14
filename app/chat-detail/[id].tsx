@@ -14,8 +14,8 @@ import {
 import background from "@/assets/images/chat-list/background.png";
 import avatar from "@/assets/images/profile/user1/avatar.png";
 import { ImageBackground } from "react-native";
-import { icon } from "@/components/constants/icon";
-import { color } from "@/components/constants/color";
+import { icons } from "@/components/constants/icon";
+import { colors } from "@/components/constants/color";
 import { useRouter } from "expo-router";
 
 const ChatDetailScreen = () => {
@@ -56,13 +56,13 @@ const ChatDetailScreen = () => {
         }}
       >
         <TouchableOpacity style={styles.icon} onPress={() => router.back()}>
-          {icon._back({ size: 25 })}
+          {icons.back({ size: 25 })}
         </TouchableOpacity>
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>
           Geopart Etdsien
         </Text>
         <TouchableOpacity style={styles.icon}>
-          {icon.phone({ size: 25 })}
+          {icons.phone({ size: 25 })}
         </TouchableOpacity>
       </View>
 
@@ -98,7 +98,7 @@ const ChatDetailScreen = () => {
                 }}
                 style={styles.sendButton}
               >
-                {icon.send({ size: 30, color: "#fff" })}
+                {icons.send({ size: 30, color: "#fff" })}
               </TouchableOpacity>
             </View>
           );
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   sendButton: {
-    backgroundColor: color.primary.main,
+    backgroundColor: colors.primary.main,
     borderRadius: 10,
     width: 50,
     height: 50,
