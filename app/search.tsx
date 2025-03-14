@@ -121,7 +121,7 @@ const SearchScreen = () => {
             <View style={styles.orderDetails}>
               {icons.star({ size: 14, color: "gold" })}
               <Text style={styles.rating}>{order.rating}</Text>
-              {icons.mapPin({ size: 14, color: "#888" })}
+              {icons.location({ size: 14, color: "#888" })}
               <Text style={styles.distance}>{order.distance}</Text>
             </View>
           </View>

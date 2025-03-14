@@ -74,7 +74,6 @@ export const icons: Record<string, (props: IconProps) => JSX.Element> = {
   dotsThree: createIcon(Entypo, "dots-three-horizontal"),
   camera: createIcon(MaterialIcons, "photo-camera"),
   sliders: createIcon(Feather, "sliders"),
-  mapPin: createIcon(Feather, "map-pin"),
   hamburger: createIcon(FontAwesome5, "hamburger"),
   hotdog: createIcon(FontAwesome5, "hotdog"),
   cocktail: createIcon(FontAwesome5, "cocktail"),
@@ -87,5 +86,4 @@ export const icons: Record<string, (props: IconProps) => JSX.Element> = {
   trash: createIcon(Feather, "trash-2"),
   userOther: createIcon(Feather, "user-plus"),
   close: createIcon(Ionicons, "close"),
-  
 };
