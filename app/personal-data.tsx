@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
+import { icons } from "@/components/constants/icon";
 
 const PersonalDataScreen = () => {
     const [gender, setGender] = useState("Male");
@@ -12,7 +12,7 @@ const PersonalDataScreen = () => {
             {/* Header */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => router.back()}>
-                    <Ionicons name="arrow-back" size={24} color="black" />
+                {icons.back({})}
                 </TouchableOpacity>
                 <Text style={styles.headerTitle}>Personal Data</Text>
             </View>
@@ -24,7 +24,7 @@ const PersonalDataScreen = () => {
                     style={styles.profileImage}
                 />
                 <TouchableOpacity style={styles.cameraIcon}>
-                    <MaterialIcons name="photo-camera" size={16} color="white" />
+                    {icons.camera({size: 16, color: "#fff"})}
                 </TouchableOpacity>
             </View>
 

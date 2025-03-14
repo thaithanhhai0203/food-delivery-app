@@ -1,4 +1,4 @@
-import { color } from '@/components/constants/color';
+import { colors } from '@/components/constants/color';
 import { useSearchParams } from 'expo-router/build/hooks';
 import React, { useState, useRef } from 'react';
 import { useRouter } from "expo-router";
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: color.primary.border,
+        borderColor: colors.primary.border,
         borderRadius: 8,
         padding: 12,
         fontSize: 20,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     button: {
-        backgroundColor: color.primary.main,
+        backgroundColor: colors.primary.main,
         borderRadius: 8,
         paddingVertical: 15,
         alignItems: "center",

@@ -1,12 +1,12 @@
-import { icon } from '@/components/constants/icon';
+import { icons } from '@/components/constants/icon';
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { PlatformPressable } from '@react-navigation/elements';
 import { useLinkBuilder } from '@react-navigation/native';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { LabelPosition } from '@react-navigation/bottom-tabs/lib/typescript/commonjs/src/types';
-import { color as colors } from '@/components/constants/color';
+import { colors } from '@/components/constants/color';
 
 interface IProps {
     onPress: () => void;
@@ -63,7 +63,7 @@ const TabBarButton = ({ onPress, onLongPress, isFocused, routeName, color, label
             style={styles.tabBarItem}
         >
             <Animated.View style={animatedIconStyle}>
-                {icon[routeName]?.({
+                {icons[routeName]?.({
                     color: color
                 })}
             </Animated.View>

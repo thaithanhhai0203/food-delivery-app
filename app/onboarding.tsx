@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import {
-  Button,
   ImageBackground,
+  ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,13 +10,13 @@ import {
 import onboarding1 from "@/assets/images/onboarding/onboarding1.png";
 import onboarding2 from "@/assets/images/onboarding/onboarding2.png";
 import onboarding3 from "@/assets/images/onboarding/onboarding3.png";
-import { color } from "@/components/constants/color";
-import { icon } from "@/components/constants/icon";
-import { useState } from "react";
+import { colors } from "@/components/constants/color";
+import { icons } from "@/components/constants/icon";
+import React, { useState } from "react";
 
 interface ISlide {
   id: number;
-  img: any;
+  img: ImageSourcePropType;
   title: string;
   des: string;
 }
@@ -80,8 +80,8 @@ const OnBoardingScreen = () => {
             <View style={styles.dashContainer}>
               {slides.map((item, index) => (
                 <View key={index}>
-                  {icon.dash({
-                    color: index === slide ? "#999" : color.neutral[10],
+                  {icons.dash({
+                    color: index === slide ? "#999" : colors.neutral[10],
                     size: 60,
                     marginHorizontal: 5,
                   })}
@@ -102,7 +102,7 @@ const OnBoardingScreen = () => {
                 style={{ flexDirection: "row", alignItems: "center" }}
               >
                 <Text style={styles.btnText}>Next</Text>
-                {icon.next({ color: color.neutral[10] })}
+                {icons.next({ color: colors.neutral[10] })}
               </TouchableOpacity>
             </View>
           ) : (
@@ -111,8 +111,8 @@ const OnBoardingScreen = () => {
                 style={{
                   marginHorizontal: "auto",
                   padding: 10,
-                  backgroundColor: color.primary.main,
-                  borderColor: color.neutral[10],
+                  backgroundColor: colors.primary.main,
+                  borderColor: colors.neutral[10],
                   borderTopWidth: 2,
                   borderRightWidth: 2,
                   borderBottomWidth: 2,
@@ -121,7 +121,7 @@ const OnBoardingScreen = () => {
                 onPress={handleCompleteOnboarding}
               >
                 <Text style={styles.btnIcon}>
-                  {icon.next({ color: color.primary.main, size: 40 })}
+                  {icons.next({ color: colors.primary.main, size: 40 })}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     marginTop: "85%",
     marginHorizontal: "auto",
     alignItems: "center",
-    backgroundColor: color.primary.main,
+    backgroundColor: colors.primary.main,
     paddingVertical: 30,
     borderRadius: 40,
     justifyContent: "space-between",
@@ -159,13 +159,13 @@ const styles = StyleSheet.create({
     width: 300,
   },
   title: {
-    color: color.neutral[10],
+    color: colors.neutral[10],
     fontSize: 30,
     textAlign: "center",
     marginBottom: 10,
   },
   des: {
-    color: color.neutral[10],
+    color: colors.neutral[10],
     fontSize: 18,
     textAlign: "center",
   },
@@ -182,14 +182,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   btnText: {
-    color: color.neutral[10],
+    color: colors.neutral[10],
     fontSize: 18,
     marginRight: 5,
   },
   btnIcon: {
     width: 80,
     height: 80,
-    backgroundColor: color.neutral[10],
+    backgroundColor: colors.neutral[10],
     textAlign: "center",
     lineHeight: 80,
     borderRadius: 50,

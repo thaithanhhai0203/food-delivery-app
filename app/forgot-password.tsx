@@ -1,4 +1,4 @@
-import { color } from "@/components/constants/color";
+import { colors } from "@/components/constants/color";
 import { useRouter } from "expo-router";
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         color: "#000",
     },
     button: {
-        backgroundColor: color.primary.main,
+        backgroundColor: colors.primary.main,
         borderRadius: 8,
         paddingVertical: 15,
         alignItems: "center",
@@ -82,12 +82,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     linkText: {
-        color: color.primary.main,
+        color: colors.primary.main,
         fontSize: 14,
         textAlign: "center",
     },
     forgotPassword: {
-        color: color.primary.main,
+        color: colors.primary.main,
         fontSize: 14,
         textAlign: "right",
         marginBottom: 30,

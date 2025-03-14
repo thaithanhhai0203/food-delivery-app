@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   ImageSourcePropType,
 } from "react-native";
-import { icon } from "@/components/constants/icon";
-import { color } from "@/components/constants/color";
-import React, { useState } from "react";
+import { icons } from "@/components/constants/icon";
+import { colors } from "@/components/constants/color";
+import React from "react";
 import { useRouter } from "expo-router";
 
 interface IProps {
@@ -55,19 +55,19 @@ const Product = (props: IProps) => {
           onPress={() => handleFavourite(data?.id, data?.isFavourite)}
         >
           {data?.isFavourite
-            ? icon.heart({ color: "red" })
-            : icon.hearto({ color: "red" })}
+            ? icons.heart({ color: "red" })
+            : icons.hearto({ color: "red" })}
         </TouchableOpacity>
       </ImageBackground>
 
       <Text style={styles.productName}>{data?.name}</Text>
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <View>
-          {icon.star({ size: 20, color: "yellow" })}
+          {icons.star({ size: 20, color: "yellow" })}
           <Text>{data?.evaluate}</Text>
         </View>
         <View>
-          {icon.location({ size: 20, color: color.primary.main })}
+          {icons.location({ size: 20, color: colors.primary.main })}
           <Text>{data?.distance}</Text>
         </View>
       </View>
@@ -113,6 +113,6 @@ const styles = StyleSheet.create({
   productPrice: {
     fontSize: 20,
     fontWeight: "600",
-    color: color.primary.main,
+    color: colors.primary.main,
   },
 });

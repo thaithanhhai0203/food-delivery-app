@@ -9,9 +9,9 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useRouter } from "expo-router";
-import { color } from "@/components/constants/color";
-import { MaterialIcons } from "@expo/vector-icons";
+import { colors } from "@/components/constants/color";
 import congratulations from "@/assets/images/congratulations.png";
+import { icons } from "@/components/constants/icon";
 
 const ResetPasswordScreen = () => {
   const router = useRouter();
@@ -54,11 +54,9 @@ const ResetPasswordScreen = () => {
           style={styles.eyeIcon}
           onPress={() => setShowNewPassword(!showNewPassword)}
         >
-          <MaterialIcons
-            name={showNewPassword ? "visibility" : "visibility-off"}
-            size={24}
-            color="gray"
-          />
+          {showNewPassword
+            ? icons.visibility({ color: "gray" })
+            : icons.visibilityOff({ color: "gray" })}
         </TouchableOpacity>
       </View>
 
@@ -76,11 +74,9 @@ const ResetPasswordScreen = () => {
           style={styles.eyeIcon}
           onPress={() => setShowConfirmPassword(!showConfirmPassword)}
         >
-          <MaterialIcons
-            name={showConfirmPassword ? "visibility" : "visibility-off"}
-            size={24}
-            color="gray"
-          />
+          {showNewPassword
+            ? icons.visibility({ color: "gray" })
+            : icons.visibilityOff({ color: "gray" })}
         </TouchableOpacity>
       </View>
 
@@ -147,13 +143,13 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 14,
-    color: color.neutral[60],
+    color: colors.neutral[60],
     textAlign: "center",
     marginBottom: 50,
   },
   input: {
     height: 50,
-    borderColor: color.primary.border,
+    borderColor: colors.primary.border,
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 15,
@@ -175,7 +171,7 @@ const styles = StyleSheet.create({
   },
 
   resetPasswordButton: {
-    backgroundColor: color.primary.main,
+    backgroundColor: colors.primary.main,
     height: 50,
     justifyContent: "center",
     alignItems: "center",

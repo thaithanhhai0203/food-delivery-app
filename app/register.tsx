@@ -8,9 +8,9 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useRouter } from "expo-router";
-import { color } from "@/components/constants/color";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { colors } from "@/components/constants/color";
 import { Checkbox } from "react-native-paper";
+import { icons } from "@/components/constants/icon";
 
 const RegisterScreen = () => {
   const router = useRouter();
@@ -57,7 +57,7 @@ const RegisterScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="User name"
-        keyboardType="user-name"
+        keyboardType="default"
         value={userName}
         onChangeText={(text) => setUserName(text)}
       />
@@ -75,11 +75,9 @@ const RegisterScreen = () => {
           style={styles.eyeIcon}
           onPress={() => setShowPassword(!showPassword)}
         >
-          <MaterialIcons
-            name={showPassword ? "visibility" : "visibility-off"}
-            size={24}
-            color="gray"
-          />
+          {showPassword
+            ? icons.visibility({ color: "gray" })
+            : icons.visibilityOff({ color: "gray" })}
         </TouchableOpacity>
       </View>
 
@@ -87,16 +85,16 @@ const RegisterScreen = () => {
         <Checkbox
           status={checked ? "checked" : "unchecked"}
           onPress={() => setChecked(!checked)}
-          color={color.primary.main}
+          color={colors.primary.main}
           uncheckedColor="gray"
         />
         <Text>
           I Agree with
-          <Text style={{ color: color.primary.main }}>
+          <Text style={{ color: colors.primary.main }}>
             Terms of Service
           </Text>{" "}
           and
-          <Text style={{ color: color.primary.main }}> Privacy Policy</Text>
+          <Text style={{ color: colors.primary.main }}> Privacy Policy</Text>
         </Text>
       </View>
 
@@ -112,14 +110,12 @@ const RegisterScreen = () => {
         <View style={styles.line} />
         <View style={styles.socialIcons}>
           <TouchableOpacity>
-            <FontAwesome name="google" size={30} color="#EA4335" />
+            {icons.google({ size: 30, color: "#EA4335" })}
           </TouchableOpacity>
           <TouchableOpacity>
-            <FontAwesome name="facebook" size={30} color="#1877F2" />
+            {icons.facebook({ size: 30, color: "#1877F2" })}
           </TouchableOpacity>
-          <TouchableOpacity>
-            <FontAwesome name="apple" size={30} color="#000000" />
-          </TouchableOpacity>
+          <TouchableOpacity>{icons.apple({ size: 30 })}</TouchableOpacity>
         </View>
       </View>
 
@@ -157,13 +153,13 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 14,
-    color: color.neutral[60],
+    color: colors.neutral[60],
     textAlign: "center",
     marginBottom: 50,
   },
   input: {
     height: 50,
-    borderColor: color.primary.border,
+    borderColor: colors.primary.border,
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 15,
@@ -180,7 +176,7 @@ const styles = StyleSheet.create({
   },
 
   registerButton: {
-    backgroundColor: color.primary.main,
+    backgroundColor: colors.primary.main,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
@@ -199,12 +195,12 @@ const styles = StyleSheet.create({
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: color.neutral[80],
+    backgroundColor: colors.neutral[80],
     marginHorizontal: 10,
   },
   socialText: {
     fontSize: 14,
-    color: color.neutral[60],
+    color: colors.neutral[60],
     marginBottom: 20,
   },
   socialIcons: {
@@ -214,11 +210,11 @@ const styles = StyleSheet.create({
   },
   signInText: {
     fontSize: 14,
-    color: color.neutral[60],
+    color: colors.neutral[60],
     textAlign: "center",
   },
   signInLink: {
-    color: color.primary.main,
+    color: colors.primary.main,
     fontWeight: "bold",
   },
 });
