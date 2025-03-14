@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -11,11 +11,51 @@ import {
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { color } from "@/components/constants/color";
 
+import * as WebBrowser from "expo-web-browser";
+import * as Facebook from "expo-auth-session/providers/facebook";
+import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
+
+WebBrowser.maybeCompleteAuthSession();
+
+const FB_APP_ID = "480342590679833";
+
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+
+  const [userInfo, setUserInfo] = React.useState(null);
+
+  const [request, response, promptAsync] = useAuthRequest(
+    {
+      clientId: FB_APP_ID,
+      redirectUri: makeRedirectUri({ useProxy: true }),
+      scopes: ["public_profile", "email"],
+      responseType: "token",
+    },
+    Facebook.discovery
+  );
+
+  useEffect(() => {
+    if (response?.type === "success") {
+      fetchUserInfo(response.params.access_token);
+    }
+  }, [response]);
+
+  const fetchUserInfo = async (token) => {
+    try {
+      const res = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,picture`
+      );
+      const data = await res.json();
+      setUserInfo(data);
+    } catch (error) {
+      console.error("Failed to fetch user info", error);
+    }
+  };
+  console.log(userInfo);
+  
 
   const handleLogin = () => {
     if (!email || !password) {
@@ -25,6 +65,8 @@ const LoginScreen = () => {
     Alert.alert("Success", `Logged in with email: ${email}`);
     router.replace("/(tabs)");
   };
+
+  const handleLoginFB = () => {};
 
   const handleForgotPassword = () => {
     router.push("/forgot-password");
@@ -88,7 +130,7 @@ const LoginScreen = () => {
           <TouchableOpacity>
             <FontAwesome name="google" size={30} color="#EA4335" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => promptAsync()}>
             <FontAwesome name="facebook" size={30} color="#1877F2" />
           </TouchableOpacity>
           <TouchableOpacity>
