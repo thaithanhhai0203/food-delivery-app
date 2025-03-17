@@ -33,11 +33,10 @@
     "expo-status-bar": "~2.0.0",
     "expo-symbols": "~0.2.0",
     "expo-system-ui": "~4.0.6",
-    "expo-web-browser": "~14.0.1",
-    "firebase": "^11.4.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-native": "^0.76.5",
+    "expo-web-browser": "~14.0.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native": "0.76.5",
     "react-native-document-picker": "^9.3.1",
     "react-native-dropdown-picker": "^5.4.6",
     "react-native-emoji-picker": "^0.2.2",
@@ -50,8 +49,7 @@
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^10.2.0",
     "react-native-web": "~0.19.13",
-    "react-native-webview": "13.12.5",
-    "expo-dev-client": "~5.0.14"
+    "react-native-webview": "13.12.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
